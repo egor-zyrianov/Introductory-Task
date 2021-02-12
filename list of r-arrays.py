@@ -47,28 +47,29 @@ order - возвращает длину r-массива
 make - создает лист заданной длинны 
     заполненный r-массивами случайного размера
 """
-class array():
-    
+class rarray():
     def __init__(self, l=0):
         self.length = l
         self.data = [random(2*l, 0.5) for count in range(self.length)]
-    
-    def order(A):
-        return(A.length)
+        
+    def order(a):
+        return(a.length)
     
     def make(n):
         bucket = [0]*n
         for count in range(-1, n-1):
             bucket[count+1] = bucket[count] + int(random(n/1.1, -0.1)) 
-        A = [array(x) for x in bucket]
-        return(A)
-"""Тело алгоритма"""    
-A = array.make(10) #инициация массива r-массивов
-print([a.length for a in A])
+        A = [rarray(x) for x in bucket]
+        return(A)       
+    
+"""Тело алгоритма"""
+def main(n):
+    A = rarray.make(n) #инициация листа r-массивов
+    
+    A[::2] = sorted(A[::2], key=rarray.order) #сортировка четных элементов с нуливого
+    A[1::2] = sorted(A[1::2], key=rarray.order, reverse=True) #обратная сортировка четных элементов с первого
+    #print([a.length for a in A])
+    A = [a.data for a in A]
+    return(A)
 
-A[::2] = sorted(A[::2], key=array.order) #сортировка четных элементов с нуливого
-A[1::2] = sorted(A[1::2], key=array.order, reverse=True) #обратная сортировка четных элементов с первого
-print([a.length for a in A])
-
-
-
+print(main(10))
