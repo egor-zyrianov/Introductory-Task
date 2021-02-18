@@ -19,7 +19,12 @@ n-массивов, заполнить их случайными числами,
 по убыванию. На выходе функция должна 
 вернуть массив с отсортированными массивами.
 """
-
+#
+try:
+    from datetime import datetime
+    t = datetime.now().microsecond / 1e6
+except Exception:
+    t = 0.5
 
 """
 Логистическое отображение(имени Фейгенбаума) -
@@ -32,13 +37,14 @@ xn+1 = r*xn(1-xn)
 return: число от 0 до 1 с вычетом 
     factor и множителем subtrahend
 """
-xi = [0.5, 0]
+xi = t
 def random(factor = 1, subtrahend = 0):
     global xi
-    r = 4 - 1/(10+xi[1])
-    xn = r*xi[0]*(1-xi[0])
-    xi = [xn, xi[1]+1]
-    return((xn-subtrahend) * factor)
+    r = 4 - 1e-5
+    xn = r*xi*(1-xi)
+    xi = xn
+    return(round((xn-subtrahend) * factor, 3))
+print(random(), random())
 """
 Клвсс r-массива инициирующийся l = int, 
     length - длина = l
