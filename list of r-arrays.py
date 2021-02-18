@@ -19,7 +19,7 @@ n-массивов, заполнить их случайными числами,
 по убыванию. На выходе функция должна 
 вернуть массив с отсортированными массивами.
 """
-#
+#Seed for random()
 try:
     from datetime import datetime
     t = datetime.now().microsecond / 1e6
