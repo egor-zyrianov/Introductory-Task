@@ -44,7 +44,6 @@ def random(factor = 1, subtrahend = 0):
     xn = r*xi*(1-xi)
     xi = xn
     return(round((xn-subtrahend) * factor, 3))
-print(random(), random())
 """
 Клвсс r-массива инициирующийся l = int, 
     length - длина = l
@@ -74,8 +73,8 @@ def main(n):
     
     A[::2] = sorted(A[::2], key=rarray.order) #сортировка четных элементов с нуливого
     A[1::2] = sorted(A[1::2], key=rarray.order, reverse=True) #обратная сортировка четных элементов с первого
-    #print([a.length for a in A])
-    A = [a.data for a in A]
+    
+    A = [a.data for a in A] #изъятие обработанных данных
     return(A)
 
 print(main(10))
